@@ -8,8 +8,8 @@
 - name: Ensure that firewalld is started and enabled
   service:
     name: firewalld
-    state: running
-    enabled: true
+    state: started
+    enabled: yes
   become: true
 
 - name: Set up the internal zone (interface that faces to the local/private network)
