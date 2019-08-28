@@ -1,0 +1,17 @@
+---
+
+- name: Enable the traffic forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    state: present
+    reload: yes
+  become: yes
+
+- name: Set up firewalld
+  include_tasks: firewalld.yml
+  when: nat_router_mode == 'firewalld'
+
+- name: Set up iptables
+  include_tasks: iptables.yml
+  when: nat_router_mode == 'iptables'

@@ -1,0 +1,7 @@
+---
+# Determines which network interface faces the public network (internet)
+nat_router_public_interface: eth0
+# Determines which network interface faces the private network
+nat_router_private_interface: eth1
+# Determines if we want to configure NAT using firewalld (default) or iptables
+nat_router_mode: firewalld
