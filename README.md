@@ -13,8 +13,8 @@ None.
 Role Variables
 --------------
 
-`nat_router_public_interface`: The name of the network interface that faces to the public network (Internet). The default value is `eth0`
-`nat_router_private_interface`: The name of the network interface that faces to the local/private network. The default value is `eth1`
+`nat_router_private_interface`: The name of the network interface that faces to the local/private network. The default value is `eth0`
+`nat_router_public_interface`: The name of the network interface that faces to the public network (Internet). The default value is `eth1`
 
 Dependencies
 ------------
