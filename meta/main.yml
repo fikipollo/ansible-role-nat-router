@@ -4,7 +4,7 @@ galaxy_info:
 
   role_name: nat-router
   author: fikipollo
-  description: easily configure a Linux system to work as as a NAT router
+  description: Easily configure a Linux system to work as as a NAT router
 
   license: BSD
 
@@ -14,7 +14,17 @@ galaxy_info:
     - name: EL
       versions:
         - 7
-
+    - name: Debian
+      versions:
+        - buster
+        - bullseye
+        - bookworm
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+        - jammy
+        - noble
   galaxy_tags:
     - routing
     - network
