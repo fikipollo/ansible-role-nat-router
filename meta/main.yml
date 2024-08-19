@@ -2,7 +2,7 @@
 
 galaxy_info:
 
-  role_name: nat-router
+  role_name: nat_router
   author: fikipollo
   description: Easily configure a Linux system to work as a NAT router using firewalld or ufw.
 
