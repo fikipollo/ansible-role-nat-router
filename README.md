@@ -10,9 +10,9 @@ None.
 
 Role Variables
 --------------
-`nat_router_mode`: Determines if we want to configure NAT using firewalld or ufw. The default value is `firewalld`.
-`nat_router_private_interface`: The name of the network interface that faces to the local/private network. The default value is `eth0`
-`nat_router_public_interface`: The name of the network interface that faces to the public network (Internet). The default value is `eth1`
+- `nat_router_mode`: Determines if we want to configure NAT using firewalld or ufw. The default value is `firewalld`.
+- `nat_router_private_interface`: The name of the network interface that faces to the local/private network. The default value is `eth0`.
+- `nat_router_public_interface`: The name of the network interface that faces to the public network (Internet). The default value is `eth1`.
 
 Dependencies
 ------------
@@ -26,6 +26,7 @@ Example Playbook
       roles:
         - role: fikipollo.nat_router
           vars:
+            - nat_router_mode: 'ufw'
             - nat_router_public_interface: enp0s3
             - nat_router_private_interface: eth0
 
