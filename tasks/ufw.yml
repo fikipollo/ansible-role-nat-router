@@ -1,0 +1,35 @@
+---
+- name: Ensure that ufw is installed
+  package:
+    name: ufw
+    state: present
+  become: true
+
+- name: Change default forward policy in /etc/default/ufw
+  lineinfile:
+    path: /etc/default/ufw
+    regexp: '^DEFAULT_FORWARD_POLICY="DROP"'
+    line: 'DEFAULT_FORWARD_POLICY="ACCEPT"'
+    backrefs: yes
+  become: true
+  notify:
+    - Restart ufw
+
+- name: add NAT to ufw
+  blockinfile:
+    path: /etc/ufw/before.rules
+    block: |
+      # NAT table rules
+      *nat
+      :POSTROUTING ACCEPT [0:0]
+
+      # Forward traffic through eth0 - Change to match you out-interface
+      -A POSTROUTING -s {{ ansible_facts[nat_router_private_interface]['ipv4']['network'] }}/{{ ansible_facts[nat_router_private_interface]['ipv4']['prefix'] }} -o {{ nat_router_public_interface }} -j MASQUERADE
+
+      # don't delete the 'COMMIT' line or these nat table rules won't
+      # be processed
+      COMMIT
+
+    insertbefore: "^# Don't delete these required lines"
+  notify:
+    - Restart ufw
